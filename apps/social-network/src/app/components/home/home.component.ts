@@ -11,7 +11,7 @@ export class HomeComponent {
   constructor(private http: HttpClient) {
   }
 
-  tryProxy() {
+  tryProxy(): void {
     this.http.get("/api/static").subscribe({
       next: console.log
     })
