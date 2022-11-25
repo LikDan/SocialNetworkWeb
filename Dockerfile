@@ -1,7 +1,6 @@
 FROM node:latest as node
 WORKDIR /app
 COPY . .
-RUN rm -r node_modules
 COPY package.json .
 COPY package-lock.json .
 RUN npm install --legacy-peer-deps
