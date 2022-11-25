@@ -9,6 +9,9 @@
     "build": "nx build",
     "test": "nx test"
   },
+  "engines": {
+    "node": "19.x"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~15.0.0",
@@ -50,6 +53,7 @@
     "eslint-plugin-cypress": "^2.10.3",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
+    "jest-preset-angular": "~12.2.2",
     "nx": "15.2.1",
     "prettier": "^2.6.2",
     "ts-jest": "28.0.5",

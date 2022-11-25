@@ -1,12 +1,31 @@
-import {Component} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import { Component } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { MenuItem } from "@web/ui-elements";
 
 @Component({
-  selector: 'web-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: "web-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent {
+
+  public menuItems: MenuItem[] = [
+    {
+      id: 1,
+      title: "Title",
+      image: "/assets/menu/feed.svg"
+    },
+    {
+      id: 2,
+      title: "Title2",
+      image: "/assets/menu/feed.svg"
+    },
+    {
+      id: 3,
+      title: "Title2",
+      image: "/assets/menu/feed.svg"
+    }
+  ];
 
   constructor(private http: HttpClient) {
   }
@@ -14,6 +33,6 @@ export class HomeComponent {
   tryProxy(): void {
     this.http.get("/api/static").subscribe({
       next: console.log
-    })
+    });
   }
 }

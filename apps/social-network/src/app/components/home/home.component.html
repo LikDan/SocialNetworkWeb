@@ -1,2 +1,36 @@
-<p>Social Network</p>
-<button class="btn btn-danger" (click)="tryProxy()">Click me</button>
+<div>
+  <button webPrimaryBtn (click)="tryProxy()">Click me</button>
+  <button webSecondaryBtn (click)="tryProxy()">Click me</button>
+  <button webSecondaryBtn webSquareBtn (click)="tryProxy()">...</button>
+  <button webDangerLightBtn webCircleBtn (click)="tryProxy()">P</button>
+  <button webPrimaryLightBtn webCircleBtn (click)="tryProxy()">P</button>
+  <button webSecondaryBtn webCircleBtn (click)="tryProxy()">P</button>
+</div>
+
+<div>
+  <button webSecondaryTextBtn>Click me</button>
+</div>
+
+<div>
+  <input webCheckbox>
+</div>
+
+<div>
+  <input webInput>
+  <input [webInput]="false">
+  <input [webInput]="true">
+</div>
+
+<div>
+  <web-menu-item [item]="menuItems[0]" [selected]="true" style="width: 100%"></web-menu-item>
+  <web-menu-item [item]="menuItems[0]" [selected]="false" style="width: 100%"></web-menu-item>
+
+  <web-menu [items]="menuItems" [selectedId]="2" style="width: 100%"></web-menu>
+</div>
+
+
+<div>
+  <web-frame style="width: 100%; height: 500px"></web-frame>
+  <web-popup style="width: 100%; height: 500px"></web-popup>
+  <web-dialog title="title" style="width: 100%; height: 500px"></web-dialog>
+</div>

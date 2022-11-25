@@ -1,0 +1,30 @@
+.form-control {
+  border-radius: 8px !important;
+
+  background-color: #ECECF4 !important;
+  border: 1px solid #E7E7E7 !important;
+
+  &:hover {
+    border: 1px solid #7E8892 !important;
+  }
+
+  &:active {
+    background: #FFFFFF !important;
+    border: 1px solid #306BFF !important;
+  }
+
+  &:disabled {
+    opacity: 0.4 !important;
+  }
+
+  &:focus {
+    background: #FFFFFF !important;
+    border: 1px solid #306BFF !important;
+    box-shadow: none !important;
+  }
+
+  &.error {
+    background: #FEECEC !important;
+    border-color: #F30000 !important;
+  }
+}
