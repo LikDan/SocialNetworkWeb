@@ -55,8 +55,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
       padding: 16px 24px;
 
       box-shadow: 0 3px 10px rgba(27, 29, 35, 0.2);
-      border-radius: 0 0 16px 16px;
-    / / or add overflow: hidden to: host
+      border-radius: 0 0 16px 16px; /*or add overflow: hidden to: host*/
     }
   `]
 })
