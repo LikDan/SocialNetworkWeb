@@ -10,7 +10,7 @@ import { CheckboxDirective } from "./checkboxes/checkbox.directive";
 import { InputDirective } from "./inputs/input.directive";
 import { MenuComponent } from "./menu/menu.component";
 import { MenuItemDirective } from "./menu/menu-item.directive";
-import { MenuItemComponent } from "./menu/menu-item.component";
+import { MenuItemComponent } from "./menu/item/menu-item.component";
 import { SecondaryTextBtnDirective } from "./buttons/secondary-text-btn.directive";
 import { FrameComponent } from "./frames/frame.component";
 import { PopupComponent } from "./frames/popup.component";

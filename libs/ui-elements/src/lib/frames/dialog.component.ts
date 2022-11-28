@@ -1,19 +1,30 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, ElementRef, Input, ViewChild } from "@angular/core";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "web-dialog",
   template: `
-    <header>
-      <h4>{{title | titlecase}}</h4>
-      <button webCircleBtn webSecondaryBtn><img src="assets/cross.svg" alt="close"></button>
-    </header>
-    <main>
-      <ng-content></ng-content>
-    </main>
-    <footer>
-      <button webSecondaryBtn (click)="cancel.emit($event)">{{secondaryButtonText}}</button>
-      <button webPrimaryBtn (click)="confirm.emit($event)">{{primaryButtonText}}</button>
-    </footer>`,
+    <ng-template #dialog let-modal>
+      <header>
+        <h4>{{title | titlecase}}</h4>
+        <button webCircleBtn webSecondaryBtn (click)="modal.dismiss(0)"><img src="assets/cross.svg" alt="close">
+        </button>
+      </header>
+      <main>
+        <ng-content></ng-content>
+      </main>
+      <footer>
+        <button
+          webSecondaryBtn
+          (click)="modal.dismiss(0)"
+        >{{secondaryButtonText}}</button>
+        <button
+          webPrimaryBtn
+          (click)="modal.dismiss(1)"
+          [disabled]="!primaryButtonActive"
+        >{{primaryButtonText}}</button>
+      </footer>
+    </ng-template>`,
   styles: [`
     :host {
       display: flex;
@@ -43,6 +54,8 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
     }
 
     main {
+      padding: 10px;
+
       flex-grow: 1;
     }
 
@@ -62,8 +75,15 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 export class DialogComponent {
   @Input() title = "";
   @Input() primaryButtonText = "Submit";
+  @Input() primaryButtonActive = true;
   @Input() secondaryButtonText = "Cancel";
 
-  @Output() cancel = new EventEmitter<MouseEvent>();
-  @Output() confirm = new EventEmitter<MouseEvent>();
+  @ViewChild("dialog") dialogRef: ElementRef;
+
+  constructor(private modalService: NgbModal) {
+  }
+
+  open(): Promise<number> {
+    return this.modalService.open(this.dialogRef).result;
+  }
 }

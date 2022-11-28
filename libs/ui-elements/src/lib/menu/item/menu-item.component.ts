@@ -2,11 +2,7 @@ import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "web-menu-item",
-  template: `
-      <button [webMenuItem]="selected">
-          <img [src]="item.image" [alt]="item.title">
-          {{item.title}}
-      </button>`,
+  templateUrl: "menu-item.component.html",
   styles: [`
     :host {
       height: 42px;

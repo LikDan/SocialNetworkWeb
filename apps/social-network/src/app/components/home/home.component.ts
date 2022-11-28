@@ -27,6 +27,8 @@ export class HomeComponent {
     }
   ];
 
+  lastRes: number | null = null;
+
   constructor(private http: HttpClient) {
   }
 
@@ -34,5 +36,9 @@ export class HomeComponent {
     this.http.get("/api/static").subscribe({
       next: console.log
     });
+  }
+
+  handle(numberPromise: Promise<number>) {
+    numberPromise.then(v => this.lastRes = v, v2 => this.lastRes = v2);
   }
 }

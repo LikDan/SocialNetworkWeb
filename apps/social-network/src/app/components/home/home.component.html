@@ -28,6 +28,14 @@
   <web-menu [items]="menuItems" [selectedId]="2" style="width: 100%"></web-menu>
 </div>
 
+<div>
+  <web-dialog #dialog title="title">
+    <button webSecondaryBtn (click)="dialog.primaryButtonActive = !dialog.primaryButtonActive">Toggle active</button>
+  </web-dialog>
+  <button webPrimaryBtn (click)="handle(dialog.open())">Show Dialog 1</button>
+
+  <p>{{lastRes ?? ""}}</p>
+</div>
 
 <div>
   <web-frame style="width: 100%; height: 500px"></web-frame>
