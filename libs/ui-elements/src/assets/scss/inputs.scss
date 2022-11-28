@@ -1,30 +1,30 @@
 .form-control {
-  border-radius: 8px !important;
+  border-radius: 8px;
 
-  background-color: #ECECF4 !important;
-  border: 1px solid #E7E7E7 !important;
+  background-color: #ECECF4;
+  border: 1px solid #E7E7E7;
 
   &:hover {
-    border: 1px solid #7E8892 !important;
+    border: 1px solid #7E8892;
   }
 
   &:active {
-    background: #FFFFFF !important;
-    border: 1px solid #306BFF !important;
+    background: #FFFFFF;
+    border: 1px solid #306BFF;
   }
 
   &:disabled {
-    opacity: 0.4 !important;
+    opacity: 0.4;
   }
 
   &:focus {
-    background: #FFFFFF !important;
-    border: 1px solid #306BFF !important;
-    box-shadow: none !important;
+    background: #FFFFFF;
+    border: 1px solid #306BFF;
+    box-shadow: none;
   }
 
   &.error {
-    background: #FEECEC !important;
-    border-color: #F30000 !important;
+    background: #FEECEC;
+    border-color: #F30000;
   }
 }

@@ -10,12 +10,12 @@ button {
   align-items: center;
   gap: 12px;
 
-  color: #7E8892 !important;
+  color: #7E8892;
 }
 
 button {
   &.selected {
-    color: #1B1D23 !important;
+    color: #1B1D23;
 
     img {
       filter: invert(30%) sepia(93%) saturate(1475%) hue-rotate(211deg) brightness(101%) contrast(103%);
