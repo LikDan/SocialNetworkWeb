@@ -3,7 +3,7 @@ WORKDIR /app
 COPY . .
 COPY package.json .
 COPY package-lock.json .
-RUN npm install --legacy-peer-deps
+RUN npm install -f
 RUN npm run build --omit=dev
 
 FROM nginx:latest
