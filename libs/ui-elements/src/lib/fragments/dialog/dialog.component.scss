@@ -1,0 +1,44 @@
+:host {
+  display: flex;
+  flex-flow: column;
+
+  background: #FFFFFF;
+  box-shadow: 0 3px 25px rgba(27, 29, 35, 0.2);
+  border-radius: 16px;
+}
+
+h4 {
+  margin: 0;
+}
+
+header button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 16px 14px 24px;
+}
+
+main {
+  padding: 10px;
+
+  flex-grow: 1;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 10px;
+  padding: 16px 24px;
+
+  box-shadow: 0 3px 10px rgba(27, 29, 35, 0.2);
+  border-radius: 0 0 16px 16px; /*or add overflow: hidden to: host*/
+}

@@ -12,9 +12,9 @@ import { MenuComponent } from "./menu/menu.component";
 import { MenuItemDirective } from "./menu/menu-item.directive";
 import { MenuItemComponent } from "./menu/item/menu-item.component";
 import { SecondaryTextBtnDirective } from "./buttons/secondary-text-btn.directive";
-import { FrameComponent } from "./frames/frame.component";
-import { PopupComponent } from "./frames/popup.component";
-import { DialogComponent } from "./frames/dialog.component";
+import { FrameComponent } from "./fragments/frame/frame.component";
+import { PopupComponent } from "./fragments/popup/popup.component";
+import { DialogComponent } from "./fragments/dialog/dialog.component";
 import { SelectDirective } from './selects/select.directive';
 
 @NgModule({
@@ -33,10 +33,13 @@ import { SelectDirective } from './selects/select.directive';
     MenuComponent,
     MenuItemDirective,
     MenuItemComponent,
+
     SecondaryTextBtnDirective,
+
     FrameComponent,
     PopupComponent,
     DialogComponent,
+
     SelectDirective
   ],
   exports: [
@@ -46,15 +49,20 @@ import { SelectDirective } from './selects/select.directive';
     CircleBtnDirective,
     DangerLightBtnDirective,
     PrimaryLightBtnDirective,
+
     CheckboxDirective,
     InputDirective,
+
     MenuComponent,
     MenuItemDirective,
     MenuItemComponent,
+
     SecondaryTextBtnDirective,
+
     FrameComponent,
     PopupComponent,
     DialogComponent,
+
     SelectDirective
   ]
 })
