@@ -15,6 +15,7 @@ import { SecondaryTextBtnDirective } from "./buttons/secondary-text-btn.directiv
 import { FrameComponent } from "./frames/frame.component";
 import { PopupComponent } from "./frames/popup.component";
 import { DialogComponent } from "./frames/dialog.component";
+import { SelectDirective } from './selects/select.directive';
 
 @NgModule({
   imports: [CommonModule],
@@ -35,7 +36,8 @@ import { DialogComponent } from "./frames/dialog.component";
     SecondaryTextBtnDirective,
     FrameComponent,
     PopupComponent,
-    DialogComponent
+    DialogComponent,
+    SelectDirective
   ],
   exports: [
     PrimaryBtnDirective,
@@ -52,7 +54,8 @@ import { DialogComponent } from "./frames/dialog.component";
     SecondaryTextBtnDirective,
     FrameComponent,
     PopupComponent,
-    DialogComponent
+    DialogComponent,
+    SelectDirective
   ]
 })
 export class UiElementsModule {

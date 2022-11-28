@@ -1,0 +1,9 @@
+version: '3.1'
+
+services:
+  web:
+    image: docker.studyum.net/sn-web
+    restart: always
+    pull_policy: always
+    ports:
+      - "10:80"

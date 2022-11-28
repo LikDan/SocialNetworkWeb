@@ -26,7 +26,8 @@
         "styles": [
           "apps/social-network/src/styles.scss",
           "libs/ui-elements/src/lib/buttons/styles.scss",
-          "libs/ui-elements/src/lib/inputs/styles.scss"
+          "libs/ui-elements/src/lib/inputs/styles.scss",
+          "libs/ui-elements/src/lib/selects/styles.scss"
         ],
         "scripts": []
       },

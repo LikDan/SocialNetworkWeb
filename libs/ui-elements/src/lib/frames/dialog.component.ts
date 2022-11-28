@@ -49,7 +49,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
     footer {
       display: flex;
       align-items: center;
-      justify-content: end;
+      justify-content: flex-end;
 
       gap: 10px;
       padding: 16px 24px;
