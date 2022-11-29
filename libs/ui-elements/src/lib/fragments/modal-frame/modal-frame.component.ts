@@ -1,5 +1,4 @@
-import { Component, Input } from "@angular/core";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
   selector: "web-modal-frame",
@@ -13,6 +12,6 @@ export class ModalFrameComponent {
   @Input() secondaryButtonText = "Cancel";
   @Input() secondaryButtonEnabled = true;
 
-  constructor(public activeModal: NgbActiveModal) {
-  }
+  @Output() closeModal = new EventEmitter()
+  @Output() dismissModal = new EventEmitter()
 }

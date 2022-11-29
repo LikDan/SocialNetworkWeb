@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: "web-modal",
@@ -7,4 +8,16 @@ import { Component, Input } from "@angular/core";
 })
 export class ModalComponent {
   @Input() content = ""
+
+
+  constructor(private activeModal: NgbActiveModal) {
+  }
+
+  close() {
+    this.activeModal.close("result")
+  }
+
+  dismiss() {
+    this.activeModal.dismiss(0)
+  }
 }

@@ -1,3 +1,6 @@
-<web-modal-frame title="Title">
+<web-modal-frame
+  title="Title"
+  (closeModal)="close()"
+  (dismissModal)="dismiss()">
   <p [innerText]="content"></p>
 </web-modal-frame>

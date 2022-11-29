@@ -30,7 +30,7 @@ export class HomeComponent {
     }
   ];
 
-  lastRes: number | null = null;
+  lastRes: string | null = null;
 
   from = new FormGroup({
     i: new FormControl("", Validators.required)
@@ -45,12 +45,18 @@ export class HomeComponent {
     });
   }
 
-  handle(numberPromise: Promise<number>) {
-    numberPromise.then(v => this.lastRes = v, v2 => this.lastRes = v2);
-  }
 
   open() {
     const modalRef = this.modalService.open(ModalComponent);
     modalRef.componentInstance.content = 'Content';
+
+    modalRef.result.then(
+      v => {
+        this.lastRes = "close " + v
+      },
+      v => {
+        this.lastRes = "dismiss " + v
+      }
+    )
   }
 }
