@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { MenuItem } from "@web/ui-elements";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { ModalComponent } from "../modal/modal.component";
 
 @Component({
   selector: "web-home",
@@ -34,7 +36,7 @@ export class HomeComponent {
     i: new FormControl("", Validators.required)
   })
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private modalService: NgbModal) {
   }
 
   tryProxy(): void {
@@ -45,5 +47,10 @@ export class HomeComponent {
 
   handle(numberPromise: Promise<number>) {
     numberPromise.then(v => this.lastRes = v, v2 => this.lastRes = v2);
+  }
+
+  open() {
+    const modalRef = this.modalService.open(ModalComponent);
+    modalRef.componentInstance.content = 'Content';
   }
 }

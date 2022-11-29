@@ -1,0 +1,37 @@
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 16px 14px 24px;
+
+  border: none;
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h4 {
+    margin: 0;
+  }
+}
+
+.modal-body {
+  padding: 10px;
+
+  flex-grow: 1;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 10px;
+  padding: 16px 24px;
+
+  box-shadow: 0 3px 10px rgba(27, 29, 35, 0.2);
+  border-radius: 0 0 16px 16px; /*or add overflow: hidden to :host*/
+}

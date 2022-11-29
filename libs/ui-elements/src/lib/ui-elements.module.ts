@@ -14,7 +14,7 @@ import { MenuItemComponent } from "./menu/item/menu-item.component";
 import { SecondaryTextBtnDirective } from "./buttons/secondary-text-btn.directive";
 import { FrameComponent } from "./fragments/frame/frame.component";
 import { PopupComponent } from "./fragments/popup/popup.component";
-import { DialogComponent } from "./fragments/dialog/dialog.component";
+import { ModalFrameComponent } from "./fragments/modal-frame/modal-frame.component";
 import { SelectDirective } from './selects/select.directive';
 
 @NgModule({
@@ -38,7 +38,7 @@ import { SelectDirective } from './selects/select.directive';
 
     FrameComponent,
     PopupComponent,
-    DialogComponent,
+    ModalFrameComponent,
 
     SelectDirective
   ],
@@ -61,7 +61,7 @@ import { SelectDirective } from './selects/select.directive';
 
     FrameComponent,
     PopupComponent,
-    DialogComponent,
+    ModalFrameComponent,
 
     SelectDirective
   ]

@@ -28,10 +28,7 @@
 </div>
 
 <div>
-  <web-dialog #dialog title="title">
-    <button webSecondaryBtn (click)="dialog.primaryButtonActive = !dialog.primaryButtonActive">Toggle active</button>
-  </web-dialog>
-  <button webPrimaryBtn (click)="handle(dialog.open())">Show Dialog 1</button>
+  <button webPrimaryBtn (click)="open()">Show Dialog</button>
 
   <p>{{lastRes ?? ""}}</p>
 </div>
@@ -39,7 +36,7 @@
 <div>
   <web-frame style="width: 100%; height: 500px"></web-frame>
   <web-popup style="width: 100%; height: 500px"></web-popup>
-  <web-dialog title="title" style="width: 100%; height: 500px"></web-dialog>
+  <web-modal-frame title="title" style="width: 100%; height: 500px"></web-modal-frame>
 </div>
 
 <div>
