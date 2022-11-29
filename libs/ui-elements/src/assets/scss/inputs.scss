@@ -23,7 +23,7 @@
     box-shadow: none;
   }
 
-  &.error {
+  &.ng-invalid.ng-touched {
     background: #FEECEC;
     border-color: #F30000;
   }

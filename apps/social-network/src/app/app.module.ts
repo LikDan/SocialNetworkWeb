@@ -7,12 +7,13 @@ import { HomeComponent } from "./components/home/home.component";
 import { HttpClientModule } from "@angular/common/http";
 import { UiElementsModule } from "@web/ui-elements";
 import { NgbActiveModal, NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { ReactiveFormsModule } from "@angular/forms";
 
 const routes: Routes = [{ path: "", component: HomeComponent }];
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
-  imports: [HttpClientModule, BrowserModule, RouterModule.forRoot(routes), UiElementsModule, NgbModule],
+  imports: [HttpClientModule, BrowserModule, RouterModule.forRoot(routes), UiElementsModule, NgbModule, ReactiveFormsModule],
   providers: [NgbActiveModal],
   bootstrap: [AppComponent]
 })

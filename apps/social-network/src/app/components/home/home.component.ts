@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { MenuItem } from "@web/ui-elements";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "web-home",
@@ -28,6 +29,10 @@ export class HomeComponent {
   ];
 
   lastRes: number | null = null;
+
+  from = new FormGroup({
+    i: new FormControl("", Validators.required)
+  })
 
   constructor(private http: HttpClient) {
   }

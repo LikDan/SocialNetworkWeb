@@ -15,11 +15,10 @@
   <input webCheckbox>
 </div>
 
-<div>
+<form [formGroup]="from">
   <input webInput>
-  <input [webInput]="false">
-  <input [webInput]="true">
-</div>
+  <input webInput formControlName="i">
+</form>
 
 <div>
   <web-menu-item [item]="menuItems[0]" [selected]="true" style="width: 100%"></web-menu-item>
