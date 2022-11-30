@@ -12,14 +12,13 @@
     "strictPropertyInitialization": false,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@web/ui-elements": ["libs/ui-elements/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

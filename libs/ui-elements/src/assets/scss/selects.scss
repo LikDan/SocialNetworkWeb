@@ -1,0 +1,8 @@
+.form-select {
+  border-radius: 25px;
+
+  &:focus {
+    box-shadow: none;
+    border-color: #CED4DA;
+  }
+}

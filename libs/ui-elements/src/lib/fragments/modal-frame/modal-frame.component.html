@@ -1,0 +1,20 @@
+<header class="modal-header">
+  <h4>{{title | titlecase}}</h4>
+  <button webCircleBtn webSecondaryBtn (click)="dismissModal.emit()"><img src="assets/cross.svg" alt="close">
+  </button>
+</header>
+<main class="modal-body">
+  <ng-content></ng-content>
+</main>
+<footer class="modal-footer">
+  <button
+    *ngIf="secondaryButtonEnabled"
+    webSecondaryBtn
+    (click)="dismissModal.emit()"
+  >{{secondaryButtonText}}</button>
+  <button
+    webPrimaryBtn
+    (click)="closeModal.emit()"
+    [disabled]="!primaryButtonActive"
+  >{{primaryButtonText}}</button>
+</footer>

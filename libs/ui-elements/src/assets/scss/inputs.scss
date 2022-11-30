@@ -1,0 +1,30 @@
+.form-control {
+  border-radius: 8px;
+
+  background-color: #ECECF4;
+  border: 1px solid #E7E7E7;
+
+  &:hover {
+    border: 1px solid #7E8892;
+  }
+
+  &:active {
+    background: #FFFFFF;
+    border: 1px solid #306BFF;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+  }
+
+  &:focus {
+    background: #FFFFFF;
+    border: 1px solid #306BFF;
+    box-shadow: none;
+  }
+
+  &.ng-invalid.ng-touched {
+    background: #FEECEC;
+    border-color: #F30000;
+  }
+}
