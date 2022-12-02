@@ -25,7 +25,8 @@
         ],
         "styles": [
           "apps/social-network/src/styles.scss",
-          "libs/ui-elements/src/assets/scss/styles.scss"
+          "libs/ui-elements/src/assets/scss/styles.scss",
+          "libs/feature-auth/src/assets/scss/styles.scss"
         ],
         "scripts": []
       },

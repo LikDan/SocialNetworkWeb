@@ -1,0 +1,46 @@
+web-frame {
+  display: grid;
+  place-items: center;
+
+  height: 521px;
+  width: 472px;
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+
+  gap: 24px;
+
+  > * {
+    width: 392px;
+  }
+}
+
+.bottom-bar {
+  display: flex;
+  flex-flow: row;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 10px;
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+}
+
+img {
+  align-self: center;
+  margin-bottom: 36px;
+}
+
+p[webErrorText] {
+  margin-top: 5px;
+}
+
+input[webCheckbox] {
+  margin-right: 8px;
+}

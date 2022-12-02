@@ -1,0 +1,24 @@
+<web-frame>
+  <main>
+    <img src="assets/logo.svg" alt="logo">
+    <form [formGroup]="form" (submit)="submit()">
+      <h3>Login to Apix</h3>
+      <div>
+        <input webInput placeholder="Email" formControlName="email">
+        <p webErrorText *ngIf="isError('email', 'required')">This filed is required</p>
+        <p webErrorText *ngIf="isError('email', 'email')">Please enter valid email</p>
+      </div>
+      <div>
+        <input webInput type="password" placeholder="Password" formControlName="password">
+        <p webErrorText *ngIf="isError('password', 'required')">This filed is required</p>
+      </div>
+      <div class="bottom-bar">
+        <div>
+          <input id="remember" webCheckbox>
+          <label for="remember">Remember me</label>
+        </div>
+        <button type="submit" webPrimaryBtn [disabled]="!form.valid">Continue</button>
+      </div>
+    </form>
+  </main>
+</web-frame>

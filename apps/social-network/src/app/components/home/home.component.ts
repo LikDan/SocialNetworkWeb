@@ -59,4 +59,8 @@ export class HomeComponent {
       }
     )
   }
+
+  log($event: any) {
+    console.log($event)
+  }
 }

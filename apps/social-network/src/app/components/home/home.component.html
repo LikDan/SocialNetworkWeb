@@ -15,6 +15,11 @@
   <input webCheckbox>
 </div>
 
+<div>
+  <web-login (loginSuccess)="log($event)"></web-login>
+  <web-signup></web-signup>
+</div>
+
 <form [formGroup]="from">
   <input webInput>
   <input webInput formControlName="i">
