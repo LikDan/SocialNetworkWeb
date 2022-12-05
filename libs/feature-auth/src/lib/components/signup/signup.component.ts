@@ -1,16 +1,18 @@
-import {Component, EventEmitter, Output} from "@angular/core"
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnDestroy, Output} from "@angular/core"
 import {FormControl, FormGroup, Validators} from "@angular/forms"
 import {AuthService} from "../../shared/auth.service"
 import {SignUpData} from "../../models/data"
 import {sameAs} from "../../utils"
 import {AuthToken} from "../../models/token"
+import {catchError, of, Subscription} from "rxjs"
 
 @Component({
   selector: "web-signup",
   templateUrl: "./signup.component.html",
-  styleUrls: ["./signup.component.scss"]
+  styleUrls: ["./signup.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SignupComponent {
+export class SignupComponent implements OnDestroy {
   form = new FormGroup({
     user: new FormGroup({
       name: new FormControl("", [Validators.required]),
@@ -25,11 +27,15 @@ export class SignupComponent {
     })
   })
 
+  primaryBtnDisabled = false
+
   @Output() signupSuccess = new EventEmitter<AuthToken>()
 
   maxDate = new Date()
 
-  constructor(private service: AuthService) {
+  private signup$: Subscription
+
+  constructor(private service: AuthService, private cdr: ChangeDetectorRef) {
     this.maxDate.setFullYear(this.maxDate.getFullYear() - 12)
   }
 
@@ -44,6 +50,14 @@ export class SignupComponent {
 
   submit(): void {
     const data = this.form.value as SignUpData
-    this.service.signup(data).subscribe(this.signupSuccess.emit)
+    this.service.signup(data).pipe(catchError(v => {
+      this.primaryBtnDisabled = false
+      this.cdr.detectChanges()
+      return of(v)
+    })).subscribe(this.signupSuccess.emit)
+  }
+
+  ngOnDestroy(): void {
+    this.signup$.unsubscribe()
   }
 }

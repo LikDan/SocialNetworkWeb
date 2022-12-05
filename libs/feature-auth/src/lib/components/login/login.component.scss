@@ -1,4 +1,4 @@
-web-frame {
+.frame {
   display: grid;
   place-items: center;
 
@@ -6,7 +6,7 @@ web-frame {
   width: 472px;
 }
 
-form {
+.form {
   display: flex;
   flex-flow: column;
 
@@ -27,20 +27,20 @@ form {
   margin-top: 10px;
 }
 
-main {
+.block {
   display: flex;
   flex-flow: column;
 }
 
-img {
+.logo {
   align-self: center;
   margin-bottom: 36px;
 }
 
-p[webErrorText] {
+.form--error-text {
   margin-top: 5px;
 }
 
-input[webCheckbox] {
+.form--remember-checkbox {
   margin-right: 8px;
 }

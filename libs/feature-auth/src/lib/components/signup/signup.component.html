@@ -1,46 +1,46 @@
-<web-frame>
-  <main>
-    <img src="assets/logo.svg" alt="logo">
-    <form [formGroup]="form" (submit)="submit()">
+<web-frame class="frame">
+  <main class="block">
+    <img src="assets/logo.svg" alt="logo" class="logo">
+    <form [formGroup]="form" (submit)="submit()" class="form">
       <h3>Sign up to Apix</h3>
-      <section formGroupName="user">
+      <section formGroupName="user" class="form--section">
         <div>
           <input webInput placeholder="Name" formControlName="name">
-          <p webErrorText *ngIf="isError('user.name', 'required')">This filed is required</p>
+          <p webErrorText *ngIf="isError('user.name', 'required')" class="form--error-text">This filed is required</p>
         </div>
         <div>
           <input webInput placeholder="Email" formControlName="email">
-          <p webErrorText *ngIf="isError('user.email', 'required')">This filed is required</p>
-          <p webErrorText *ngIf="isError('user.email', 'email')">Please enter valid email</p>
+          <p webErrorText *ngIf="isError('user.email', 'required')" class="form--error-text">This filed is required</p>
+          <p webErrorText *ngIf="isError('user.email', 'email')" class="form--error-text">Please enter valid email</p>
         </div>
         <div>
           <input webInput placeholder="Password" formControlName="password" type="password">
-          <p webErrorText *ngIf="isError('user.password', 'required')">This filed is required</p>
-          <p webErrorText *ngIf="isError('user.password', 'minlength')">Min length is 8</p>
+          <p webErrorText *ngIf="isError('user.password', 'required')" class="form--error-text">This filed is required</p>
+          <p webErrorText *ngIf="isError('user.password', 'minlength')" class="form--error-text">Min length is 8</p>
         </div>
         <div>
           <input webInput placeholder="Confirm password" formControlName="password_confirmation" type="password">
-          <p webErrorText *ngIf="isError('user.password_confirmation', 'notSame')">Password mismatch</p>
+          <p webErrorText *ngIf="isError('user.password_confirmation', 'notSame')" class="form--error-text">Password mismatch</p>
         </div>
       </section>
-      <section formGroupName="profile">
+      <section formGroupName="profile" class="form--section">
         <div>
           <input webInput placeholder="Nickname" formControlName="nickname">
-          <p webErrorText *ngIf="isError('profile.nickname', 'required')">This filed is required</p>
+          <p webErrorText *ngIf="isError('profile.nickname', 'required')" class="form--error-text">This filed is required</p>
         </div>
         <div>
-          <input #birthday webInput placeholder="Birthday" formControlName="birthday"
+          <input #birthday webInput placeholder="Birthday" formControlName="birthday" class="form--input--date"
                  type="text" [max]="maxDate | date: 'yyyy-MM-dd'"
                  (focusin)="birthday.type = 'date'" (focusout)="birthday.type = 'text'">
-          <p webErrorText *ngIf="isError('profile.birthday', 'required')">This filed is required</p>
+          <p webErrorText *ngIf="isError('profile.birthday', 'required')" class="form--error-text">This filed is required</p>
         </div>
       </section>
       <div class="bottom-bar">
         <div formGroupName="profile">
-          <input id="is_private" webCheckbox type="checkbox" formControlName="is_private">
+          <input id="is_private" webCheckbox type="checkbox" formControlName="is_private" class="form--private-checkbox">
           <label for="is_private">Private</label>
         </div>
-        <button type="submit" webPrimaryBtn [disabled]="!form.valid">Continue</button>
+        <button type="submit" webPrimaryBtn [disabled]="!form.valid || primaryBtnDisabled">Continue</button>
       </div>
     </form>
   </main>

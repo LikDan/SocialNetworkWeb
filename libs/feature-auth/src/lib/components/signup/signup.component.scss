@@ -1,4 +1,4 @@
-web-frame {
+.frame {
   display: grid;
   place-items: center;
 
@@ -6,7 +6,7 @@ web-frame {
   width: 472px;
 }
 
-form, section[formGroupName] {
+.form, .form--section {
   display: flex;
   flex-flow: column;
 
@@ -27,24 +27,24 @@ form, section[formGroupName] {
   margin-top: 10px;
 }
 
-main {
+.block {
   display: flex;
   flex-flow: column;
 }
 
-img {
+.logo {
   align-self: center;
   margin-bottom: 36px;
 }
 
-p[webErrorText] {
+.form--error-text {
   margin-top: 5px;
 }
 
-input[webCheckbox] {
+.form--private-checkbox {
   margin-right: 8px;
 }
 
-input[type='date'] {
+.form--input--date {
   display: grid;
 }
