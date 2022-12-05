@@ -15,16 +15,24 @@
   > * {
     width: 392px;
   }
-}
 
-.bottom-bar {
-  display: flex;
-  flex-flow: row;
+  &--error-text {
+    margin-top: 5px;
+  }
 
-  justify-content: space-between;
-  align-items: center;
+  &--remember-checkbox {
+    margin-right: 8px;
+  }
 
-  margin-top: 10px;
+  &--bottom-bar {
+    display: flex;
+    flex-flow: row;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 10px;
+  }
 }
 
 .block {
@@ -35,12 +43,4 @@
 .logo {
   align-self: center;
   margin-bottom: 36px;
-}
-
-.form--error-text {
-  margin-top: 5px;
-}
-
-.form--remember-checkbox {
-  margin-right: 8px;
 }
