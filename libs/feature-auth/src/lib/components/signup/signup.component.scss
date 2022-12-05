@@ -1,0 +1,50 @@
+.frame {
+  display: grid;
+  place-items: center;
+
+  height: 840px;
+  width: 472px;
+}
+
+.form, .form--section {
+  display: flex;
+  flex-flow: column;
+
+  gap: 24px;
+
+  > * {
+    width: 392px;
+  }
+
+  &--error-text {
+    margin-top: 5px;
+  }
+
+  &--private-checkbox {
+    margin-right: 8px;
+  }
+
+  &--input--date {
+    display: grid;
+  }
+
+  &--bottom-bar {
+    display: flex;
+    flex-flow: row;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 10px;
+  }
+}
+
+.block {
+  display: flex;
+  flex-flow: column;
+}
+
+.logo {
+  align-self: center;
+  margin-bottom: 36px;
+}

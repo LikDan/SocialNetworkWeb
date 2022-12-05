@@ -1,9 +1,10 @@
-import { Component } from "@angular/core";
+import {ChangeDetectionStrategy, Component} from "@angular/core"
 
 @Component({
   selector: "web-popup",
   templateUrl: "popup.component.html",
-  styleUrls: ["popup.component.scss"]
+  styleUrls: ["popup.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PopupComponent {
 }

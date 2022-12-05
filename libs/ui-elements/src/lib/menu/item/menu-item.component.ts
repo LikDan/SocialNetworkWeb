@@ -1,9 +1,10 @@
-import { Component, Input } from "@angular/core";
+import {ChangeDetectionStrategy, Component, Input} from "@angular/core"
 
 @Component({
   selector: "web-menu-item",
   templateUrl: "menu-item.component.html",
-  styleUrls: ['menu-item.component.scss']
+  styleUrls: ['menu-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuItemComponent {
   @Input() item: MenuItem;

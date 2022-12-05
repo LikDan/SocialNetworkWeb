@@ -16,6 +16,7 @@ import { FrameComponent } from "./fragments/frame/frame.component";
 import { PopupComponent } from "./fragments/popup/popup.component";
 import { ModalFrameComponent } from "./fragments/modal-frame/modal-frame.component";
 import { SelectDirective } from './selects/select.directive';
+import { ErrorTextDirective } from './text/error-text.directive';
 
 @NgModule({
   imports: [CommonModule],
@@ -40,7 +41,8 @@ import { SelectDirective } from './selects/select.directive';
     PopupComponent,
     ModalFrameComponent,
 
-    SelectDirective
+    SelectDirective,
+     ErrorTextDirective
   ],
   exports: [
     PrimaryBtnDirective,
@@ -63,7 +65,8 @@ import { SelectDirective } from './selects/select.directive';
     PopupComponent,
     ModalFrameComponent,
 
-    SelectDirective
+    SelectDirective,
+     ErrorTextDirective
   ]
 })
 export class UiElementsModule {

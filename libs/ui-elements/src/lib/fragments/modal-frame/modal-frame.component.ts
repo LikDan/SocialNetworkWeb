@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from "@angular/core"
 
 @Component({
   selector: "web-modal-frame",
   templateUrl: "modal-frame.component.html",
-  styleUrls: ["modal-frame.component.scss"]
+  styleUrls: ["modal-frame.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalFrameComponent {
   @Input() title = "";

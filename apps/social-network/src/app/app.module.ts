@@ -9,6 +9,7 @@ import {UiElementsModule} from "@web/ui-elements"
 import {NgbActiveModal, NgbModule} from "@ng-bootstrap/ng-bootstrap"
 import {ReactiveFormsModule} from "@angular/forms"
 import {ModalComponent} from "./components/modal/modal.component"
+import { FeatureAuthModule } from "@web/feature-auth";
 
 const routes: Routes = [{path: "", component: HomeComponent}]
 
@@ -21,6 +22,7 @@ const routes: Routes = [{path: "", component: HomeComponent}]
     UiElementsModule,
     NgbModule,
     ReactiveFormsModule,
+    FeatureAuthModule
   ],
   providers: [NgbActiveModal],
   bootstrap: [AppComponent],
