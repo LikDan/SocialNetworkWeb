@@ -1,4 +1,13 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnDestroy, Output} from "@angular/core"
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnDestroy,
+  Output,
+  ViewChild
+} from "@angular/core"
 import {FormControl, FormGroup, Validators} from "@angular/forms"
 import {LoginData} from "../../models/data"
 import {AuthService} from "../../shared/auth.service"
@@ -20,9 +29,16 @@ export class LoginComponent implements OnDestroy {
   primaryBtnDisabled = false
 
   @Output() loginSuccess = new EventEmitter<AuthToken>()
+  @Output() signup = new EventEmitter<null>()
+
+  @ViewChild("remember") rememberCheckbox: ElementRef<HTMLInputElement>
   private login$: Subscription
 
   constructor(private service: AuthService, private cdr: ChangeDetectorRef) {
+  }
+
+  get remember(): boolean {
+    return this.rememberCheckbox.nativeElement.checked
   }
 
   get(control: string): FormControl {
@@ -42,10 +58,10 @@ export class LoginComponent implements OnDestroy {
       this.primaryBtnDisabled = false
       this.cdr.detectChanges()
       return of(v)
-    })).subscribe(this.loginSuccess.emit)
+    })).subscribe({next: t => this.loginSuccess.emit(t)})
   }
 
   ngOnDestroy(): void {
-    this.login$.unsubscribe()
+    this.login$?.unsubscribe()
   }
 }

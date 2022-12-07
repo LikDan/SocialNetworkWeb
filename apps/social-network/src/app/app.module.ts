@@ -4,17 +4,22 @@ import {RouterModule, Routes} from "@angular/router"
 
 import {AppComponent} from "./app.component"
 import {HomeComponent} from "./components/home/home.component"
-import {HttpClientModule} from "@angular/common/http"
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http"
 import {UiElementsModule} from "@web/ui-elements"
 import {NgbActiveModal, NgbModule} from "@ng-bootstrap/ng-bootstrap"
 import {ReactiveFormsModule} from "@angular/forms"
 import {ModalComponent} from "./components/modal/modal.component"
-import { FeatureAuthModule } from "@web/feature-auth";
+import {FeatureAuthModule} from "@web/feature-auth"
+import {AuthComponent} from "./components/auth/auth.component"
+import {AuthHttpInterceptor} from "../../../../libs/feature-user/src/lib/interceptors/auth-http.service"
 
-const routes: Routes = [{path: "", component: HomeComponent}]
+const routes: Routes = [
+  {path: "", component: HomeComponent},
+  {path: "auth", component: AuthComponent}
+]
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ModalComponent],
+  declarations: [AppComponent, HomeComponent, ModalComponent, AuthComponent],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -24,7 +29,15 @@ const routes: Routes = [{path: "", component: HomeComponent}]
     ReactiveFormsModule,
     FeatureAuthModule
   ],
-  providers: [NgbActiveModal],
-  bootstrap: [AppComponent],
+  providers: [
+    NgbActiveModal,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true
+    }
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

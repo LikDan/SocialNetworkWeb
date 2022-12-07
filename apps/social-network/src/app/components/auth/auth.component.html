@@ -1,0 +1,11 @@
+<web-login
+  #login
+  *ngIf="loginMode"
+  (loginSuccess)="saveToken(login.remember, $event)"
+  (signup)="loginMode = false"
+></web-login>
+<web-signup
+  *ngIf="!loginMode"
+  (signupSuccess)="saveToken(true, $event)"
+  (login)="loginMode = true"
+></web-signup>

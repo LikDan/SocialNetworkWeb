@@ -1,16 +1,19 @@
-import { Component } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { MenuItem } from "@web/ui-elements";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { ModalComponent } from "../modal/modal.component";
+import {Component, OnDestroy} from "@angular/core"
+import {HttpClient} from "@angular/common/http"
+import {MenuItem} from "@web/ui-elements"
+import {FormControl, FormGroup, Validators} from "@angular/forms"
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap"
+import {ModalComponent} from "../modal/modal.component"
+import {Router} from "@angular/router"
+import {Subscription} from "rxjs"
+import {UserService} from "../../../../../../libs/feature-user/src/lib/shared/user.service"
 
 @Component({
   selector: "web-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"]
 })
-export class HomeComponent {
+export class HomeComponent implements OnDestroy {
 
   public menuItems: MenuItem[] = [
     {
@@ -28,27 +31,34 @@ export class HomeComponent {
       title: "Title2",
       image: "/assets/menu/feed.svg"
     }
-  ];
+  ]
 
-  lastRes: string | null = null;
+  lastRes: string | null = null
 
   from = new FormGroup({
     i: new FormControl("", Validators.required)
   })
 
-  constructor(private http: HttpClient, private modalService: NgbModal) {
+  profile$: Subscription
+
+  constructor(private http: HttpClient, private modalService: NgbModal, private router: Router, private userService: UserService) {
+    this.profile$ = this.userService.loadProfile().subscribe({
+      next: profile => {
+        if (profile != null) return
+        this.router.navigate(["auth"]).then()
+      }
+    })
   }
 
   tryProxy(): void {
     this.http.get("/api/static").subscribe({
       next: console.log
-    });
+    })
   }
 
-
   open() {
-    const modalRef = this.modalService.open(ModalComponent);
-    modalRef.componentInstance.content = 'Content';
+    const modalRef = this.modalService.open(ModalComponent)
+    modalRef.componentInstance.content = "Content"
 
     modalRef.result.then(
       v => {
@@ -60,7 +70,11 @@ export class HomeComponent {
     )
   }
 
-  log($event: any) {
-    console.log($event)
+  logout(): void {
+    this.userService.logout()
+  }
+
+  ngOnDestroy(): void {
+    this.profile$.unsubscribe()
   }
 }

@@ -18,6 +18,7 @@
     "baseUrl": ".",
     "paths": {
       "@web/feature-auth": ["libs/feature-auth/src/index.ts"],
+      "@web/feature-user": ["libs/feature-user/src/index.ts"],
       "@web/ui-elements": ["libs/ui-elements/src/index.ts"]
     }
   },

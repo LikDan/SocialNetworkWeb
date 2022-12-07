@@ -1,5 +1,5 @@
 <div>
-  <button webPrimaryBtn (click)="tryProxy()">Click me</button>
+  <button webPrimaryBtn (click)="logout()">Log out</button>
   <button webSecondaryBtn (click)="tryProxy()">Click me</button>
   <button webSecondaryBtn webSquareBtn (click)="tryProxy()">...</button>
   <button webDangerLightBtn webCircleBtn (click)="tryProxy()">P</button>
@@ -13,11 +13,6 @@
 
 <div>
   <input webCheckbox>
-</div>
-
-<div>
-  <web-login (loginSuccess)="log($event)"></web-login>
-  <web-signup></web-signup>
 </div>
 
 <form [formGroup]="from">
