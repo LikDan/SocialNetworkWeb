@@ -14,6 +14,7 @@ export class UserService {
   private profile$ = new ReplaySubject<Profile | null>(1)
 
   constructor(private http: HttpClient) {
+    this.loadProfile()
   }
 
   get token() {

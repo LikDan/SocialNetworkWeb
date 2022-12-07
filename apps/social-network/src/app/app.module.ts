@@ -12,10 +12,11 @@ import {ModalComponent} from "./components/modal/modal.component"
 import {FeatureAuthModule} from "@web/feature-auth"
 import {AuthComponent} from "./components/auth/auth.component"
 import {AuthHttpInterceptor} from "../../../../libs/feature-user/src/lib/interceptors/auth-http.service"
+import {LoggedInGuard} from "../../../../libs/feature-user/src/lib/guards/logged-in.guard"
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
-  {path: "auth", component: AuthComponent}
+  {path: "auth", component: AuthComponent, canActivate: [LoggedInGuard]}
 ]
 
 @NgModule({

@@ -1,5 +1,4 @@
-import {Component, OnDestroy} from "@angular/core"
-import {HttpClient} from "@angular/common/http"
+import {Component, OnDestroy, OnInit} from "@angular/core"
 import {MenuItem} from "@web/ui-elements"
 import {FormControl, FormGroup, Validators} from "@angular/forms"
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap"
@@ -13,7 +12,7 @@ import {UserService} from "../../../../../../libs/feature-user/src/lib/shared/us
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"]
 })
-export class HomeComponent implements OnDestroy {
+export class HomeComponent implements OnDestroy, OnInit {
 
   public menuItems: MenuItem[] = [
     {
@@ -41,18 +40,15 @@ export class HomeComponent implements OnDestroy {
 
   profile$: Subscription
 
-  constructor(private http: HttpClient, private modalService: NgbModal, private router: Router, private userService: UserService) {
-    this.profile$ = this.userService.loadProfile().subscribe({
+  constructor(private modalService: NgbModal, private router: Router, private userService: UserService) {
+  }
+
+  ngOnInit(): void {
+    this.profile$ = this.userService.getProfile().subscribe({
       next: profile => {
         if (profile != null) return
         this.router.navigate(["auth"]).then()
       }
-    })
-  }
-
-  tryProxy(): void {
-    this.http.get("/api/static").subscribe({
-      next: console.log
     })
   }
 
