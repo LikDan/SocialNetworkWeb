@@ -16,7 +16,9 @@ import {LoggedInGuard} from "../../../../libs/feature-user/src/lib/guards/logged
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
-  {path: "auth", component: AuthComponent, canActivate: [LoggedInGuard]}
+  {path: "auth", component: AuthComponent, canActivate: [LoggedInGuard]},
+
+  {path: "**", redirectTo: ""}
 ]
 
 @NgModule({
