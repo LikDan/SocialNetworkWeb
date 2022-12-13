@@ -1,47 +1,25 @@
-<div>
-  <button webPrimaryBtn (click)="logout()">Log out</button>
-  <button webSecondaryBtn>Click me</button>
-  <button webSecondaryBtn webSquareBtn>...</button>
-  <button webDangerLightBtn webCircleBtn>P</button>
-  <button webPrimaryLightBtn webCircleBtn>P</button>
-  <button webSecondaryBtn webCircleBtn>P</button>
-</div>
-
-<div>
-  <button webSecondaryTextBtn>Click me</button>
-</div>
-
-<div>
-  <input webCheckbox>
-</div>
-
-<form [formGroup]="from">
-  <input webInput>
-  <input webInput formControlName="i">
-</form>
-
-<div>
-  <web-menu-item [item]="menuItems[0]" [selected]="true" style="width: 100%"></web-menu-item>
-  <web-menu-item [item]="menuItems[0]" [selected]="false" style="width: 100%"></web-menu-item>
-
-  <web-menu [items]="menuItems" [selectedId]="2" style="width: 100%"></web-menu>
-</div>
-
-<div>
-  <button webPrimaryBtn (click)="open()">Show Dialog</button>
-
-  <p>{{lastRes ?? ""}}</p>
-</div>
-
-<div>
-  <web-frame style="width: 100%; height: 500px"></web-frame>
-  <web-popup style="width: 100%; height: 500px"></web-popup>
-  <web-modal-frame title="title" style="width: 100%; height: 500px"></web-modal-frame>
-</div>
-
-<div>
-  <select webSelect>
-    <option>1</option>
-    <option>2</option>
-  </select>
-</div>
+<section class="section">
+  <web-profile></web-profile>
+  <web-frame class="frame--profile">
+    Profile
+  </web-frame>
+  <web-frame class="frame--nav">
+    Navigation
+  </web-frame>
+  <web-frame class="frame--subscribers">
+    Subscribers
+  </web-frame>
+</section>
+<section class="section section--main">
+  <web-frame class="frame--create-post">
+    Create post
+  </web-frame>
+  <web-frame class="frame--post">
+    Post
+  </web-frame>
+</section>
+<section class="section">
+  <web-frame class="frame--requests">
+    Requests
+  </web-frame>
+</section>

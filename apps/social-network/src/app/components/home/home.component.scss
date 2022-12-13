@@ -1,15 +1,60 @@
 :host {
-  padding: 10px;
-
-  display: flex;
-  flex-flow: column;
-
-  gap: 10px;
-}
-
-div, form{
   display: flex;
   flex-flow: row;
 
-  gap: 10px;
+  gap: 28px;
+
+  padding: 28px;
+}
+
+.section {
+  position: sticky;
+  top: 0;
+
+  height: fit-content;
+
+  display: flex;
+  flex-flow: column;
+  gap: 24px;
+
+  &--main {
+    flex-grow: 1;
+  }
+}
+
+web-frame {
+  display: grid;
+  place-items: center;
+}
+
+.frame {
+  &--profile {
+    width: 283px;
+    height: 347px;
+  }
+
+  &--nav {
+    width: 283px;
+    height: 204px;
+  }
+
+  &--subscribers {
+    width: 283px;
+    height: 800px;
+  }
+
+  &--create-post {
+    width: 663px;
+    height: 124px;
+  }
+
+  &--post {
+    width: 663px;
+    height: 532px;
+  }
+
+  &--requests {
+    width: 308px;
+    height: 800px;
+  }
 }

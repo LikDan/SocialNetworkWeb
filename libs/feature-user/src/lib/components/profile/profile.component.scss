@@ -1,0 +1,24 @@
+.frame {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  &--image {
+    width: 82px;
+    aspect-ratio: 1;
+
+    margin-bottom: 20px;
+  }
+
+  &--nickname {
+    margin-bottom: 2px;
+  }
+
+  &--birthday {
+    margin-bottom: 24px;
+  }
+
+  &--profile-btn {
+    width: 100%;
+  }
+}

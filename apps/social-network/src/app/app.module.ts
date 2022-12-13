@@ -13,6 +13,7 @@ import {FeatureAuthModule} from "@web/feature-auth"
 import {AuthComponent} from "./components/auth/auth.component"
 import {AuthHttpInterceptor} from "../../../../libs/feature-user/src/lib/interceptors/auth-http.service"
 import {LoggedInGuard} from "../../../../libs/feature-user/src/lib/guards/logged-in.guard"
+import {FeatureUserModule} from "@web/feature-user"
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -30,7 +31,8 @@ const routes: Routes = [
     UiElementsModule,
     NgbModule,
     ReactiveFormsModule,
-    FeatureAuthModule
+    FeatureAuthModule,
+    FeatureUserModule
   ],
   providers: [
     NgbActiveModal,

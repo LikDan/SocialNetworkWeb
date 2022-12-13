@@ -1,0 +1,13 @@
+<web-frame *ngIf="user$ | async as user" class="frame">
+  <img [src]="user.picture_path" alt="profile" class="frame--image">
+  <h4 [innerText]="user.nickname" class="frame--nickname"></h4>
+  <p [innerText]="user.birthday" class="frame--birthday"></p>
+
+  <web-secondary-icon-button
+    class="frame--profile-btn"
+    src="assets/profile-widgets.svg"
+    alt=""
+    (click)="profileClick.emit($event)"
+  >Profile
+  </web-secondary-icon-button>
+</web-frame>

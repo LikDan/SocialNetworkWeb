@@ -11,7 +11,7 @@ export class LoggedInGuard implements CanActivate {
   constructor(private service: UserService, private router: Router) {
   }
 
-  redirect() {
+  redirect(): void {
     this.router.navigate([""]).then()
   }
 
