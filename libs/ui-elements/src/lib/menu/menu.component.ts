@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from "@angular/core"
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from "@angular/core"
 import { MenuItem } from "./item/menu-item.component";
 
 @Component({
@@ -10,4 +10,6 @@ import { MenuItem } from "./item/menu-item.component";
 export class MenuComponent {
   @Input() items: MenuItem[];
   @Input() selectedId = 0;
+
+  @Output() selectItem = new EventEmitter<MenuItem>()
 }

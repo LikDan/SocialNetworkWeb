@@ -3,6 +3,10 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap"
 import {Router} from "@angular/router"
 import {Subscription} from "rxjs"
 import {UserService} from "../../../../../../libs/feature-user/src/lib/shared/user.service"
+import {MenuItem} from "@web/ui-elements"
+import {
+  ProfileEditModalComponent
+} from "../../../../../../libs/feature-user/src/lib/components/profile-edit-modal/profile-edit-modal.component"
 
 @Component({
   selector: "web-home",
@@ -11,6 +15,12 @@ import {UserService} from "../../../../../../libs/feature-user/src/lib/shared/us
 })
 export class HomeComponent implements OnDestroy, OnInit {
   profile$: Subscription
+
+  selectedMenuItemId = 1
+  menuItems: MenuItem[] = [
+    {id: 1, title: "Profile", image: "assets/feed.svg"},
+    {id: 2, title: "Requests", image: "assets/requests.svg"}
+  ]
 
   constructor(private modalService: NgbModal, private router: Router, private userService: UserService) {
   }
@@ -26,5 +36,15 @@ export class HomeComponent implements OnDestroy, OnInit {
 
   ngOnDestroy(): void {
     this.profile$.unsubscribe()
+  }
+
+  openProfileModal() {
+    const modalRef = this.modalService.open(ProfileEditModalComponent);
+    modalRef.componentInstance.content = 'Content';
+
+    modalRef.result.then(
+      v =>  console.log(v),
+      v => console.log(v)
+    )
   }
 }

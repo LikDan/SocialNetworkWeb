@@ -35,7 +35,10 @@ web-frame {
 
   &--nav {
     width: 283px;
-    height: 204px;
+
+    &-menu {
+      width: 100%;
+    }
   }
 
   &--subscribers {
@@ -51,10 +54,5 @@ web-frame {
   &--post {
     width: 663px;
     height: 532px;
-  }
-
-  &--requests {
-    width: 308px;
-    height: 800px;
   }
 }

@@ -1,13 +1,12 @@
 <section class="section">
-  <web-profile></web-profile>
-  <web-frame class="frame--profile">
-    Profile
-  </web-frame>
+  <web-profile (profileClick)="openProfileModal()"></web-profile>
   <web-frame class="frame--nav">
-    Navigation
-  </web-frame>
-  <web-frame class="frame--subscribers">
-    Subscribers
+    <web-menu
+      class="frame--nav-menu"
+      [items]="menuItems"
+      [selectedId]="selectedMenuItemId"
+      (selectItem)="selectedMenuItemId = $event.id"
+    ></web-menu>
   </web-frame>
 </section>
 <section class="section section--main">
@@ -19,7 +18,7 @@
   </web-frame>
 </section>
 <section class="section">
-  <web-frame class="frame--requests">
-    Requests
+  <web-frame class="frame--subscribers">
+    Subscribers
   </web-frame>
 </section>

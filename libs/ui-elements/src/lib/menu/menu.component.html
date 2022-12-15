@@ -1,3 +1,7 @@
 <ng-container *ngFor="let item of items">
-  <web-menu-item [item]="item" [selected]="item.id === selectedId"></web-menu-item>
+  <web-menu-item
+    [item]="item"
+    [selected]="item.id === selectedId"
+    (click)="selectItem.emit(item)"
+  ></web-menu-item>
 </ng-container>

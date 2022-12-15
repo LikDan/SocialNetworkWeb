@@ -47,4 +47,25 @@ export class UserService {
 
     return this.getProfile()
   }
+
+  updateProfile(profile: Profile): void {
+    this.http.put<Profile | null>(`api/profiles/${this.profile?.id ?? -1}`, profile).subscribe({
+      next: profile => this.profile$.next(profile)
+    })
+  }
+
+  updatePhoto(file: File) {
+    const formData = new FormData();
+    formData.append("avatar", file, file.name);
+
+    this.http.post<string>(`api/profiles/addPicture`, formData).subscribe({
+      next: url => {
+        const profile = this.profile
+        if (profile == null) return
+
+        profile.picture_path = url
+        this.profile$.next(profile)
+      }
+    })
+  }
 }
