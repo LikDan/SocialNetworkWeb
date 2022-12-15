@@ -58,12 +58,12 @@ export class UserService {
     const formData = new FormData();
     formData.append("avatar", file, file.name);
 
-    this.http.post<string>(`api/profiles/addPicture`, formData).subscribe({
+    this.http.post<{url: string}>(`api/profiles/addPicture`, formData).subscribe({
       next: url => {
         const profile = this.profile
         if (profile == null) return
 
-        profile.picture_path = url
+        profile.picture_path = url.url
         this.profile$.next(profile)
       }
     })
