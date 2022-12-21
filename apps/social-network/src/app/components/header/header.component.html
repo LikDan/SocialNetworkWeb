@@ -1,0 +1,7 @@
+<img src="assets/logo.svg" alt="logo" class="logo">
+<div *ngIf="profile$ | async as profile" ngbDropdown class="d-inline-block">
+  <img [src]="profile.picture_path" alt="profile" class="profile" id="profileImage" ngbDropdownToggle>
+  <div ngbDropdownMenu aria-labelledby="profileImage">
+    <button ngbDropdownItem (click)="logout()">Logout</button>
+  </div>
+</div>

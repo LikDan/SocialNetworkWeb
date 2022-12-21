@@ -14,16 +14,23 @@ import {AuthComponent} from "./components/auth/auth.component"
 import {AuthHttpInterceptor} from "../../../../libs/feature-user/src/lib/interceptors/auth-http.service"
 import {LoggedInGuard} from "../../../../libs/feature-user/src/lib/guards/logged-in.guard"
 import {FeatureUserModule} from "@web/feature-user"
+import {HeaderComponent} from "./components/header/header.component"
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "auth", component: AuthComponent, canActivate: [LoggedInGuard]},
 
-  {path: "**", redirectTo: ""}
+  {path: "**", redirectTo: ""},
 ]
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ModalComponent, AuthComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    ModalComponent,
+    AuthComponent,
+    HeaderComponent,
+  ],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -32,17 +39,16 @@ const routes: Routes = [
     NgbModule,
     ReactiveFormsModule,
     FeatureAuthModule,
-    FeatureUserModule
+    FeatureUserModule,
   ],
   providers: [
     NgbActiveModal,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthHttpInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

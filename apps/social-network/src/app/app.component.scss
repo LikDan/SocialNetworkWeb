@@ -1,1 +1,10 @@
+@use "apps/social-network/src/styles";
 
+.header {
+  position: sticky;
+  top: 0;
+
+  height: styles.$headerHeight;
+
+  z-index: 9999;
+}
