@@ -17,7 +17,7 @@ export class UserService {
     this.loadProfile()
   }
 
-  get token() {
+  get token(): string | null {
     return localStorage.getItem(UserService.tokenKey) ?? sessionStorage.getItem(UserService.tokenKey)
   }
 
@@ -41,31 +41,35 @@ export class UserService {
       return this.getProfile()
     }
 
-    this.http.get<Profile | null>("api/profiles/self").pipe(tap(p => this.profile = p)).subscribe({
-      next: profile => this.profile$.next(profile)
+    this.http.get<Profile | null>("api/profiles/self").subscribe({
+      next: profile => {
+        this.profile = profile
+        this.profile$.next(profile)
+      }
     })
 
     return this.getProfile()
   }
 
-  updateProfile(profile: Profile): void {
-    this.http.put<Profile | null>(`api/profiles/${this.profile?.id ?? -1}`, profile).subscribe({
-      next: profile => this.profile$.next(profile)
-    })
+  updateProfile(profile: Profile): Observable<Profile | null> {
+    return this.http.put<Profile | null>(`api/profiles/${this.profile?.id ?? -1}`, profile)
+      .pipe(tap(p => {
+        this.profile = p
+        this.profile$.next(p)
+      }))
   }
 
-  updatePhoto(file: File) {
-    const formData = new FormData();
-    formData.append("avatar", file, file.name);
+  updatePhoto(file: File): Observable<{url: string}> {
+    const formData = new FormData()
+    formData.append("avatar", file, file.name)
 
-    this.http.post<{url: string}>(`api/profiles/addPicture`, formData).subscribe({
-      next: url => {
+    return this.http.post<{url: string}>(`api/profiles/addPicture`, formData)
+      .pipe(tap(url => {
         const profile = this.profile
         if (profile == null) return
 
         profile.picture_path = url.url
         this.profile$.next(profile)
-      }
-    })
+      }))
   }
 }

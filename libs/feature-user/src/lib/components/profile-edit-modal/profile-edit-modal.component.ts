@@ -1,7 +1,7 @@
-import {ChangeDetectionStrategy, Component} from "@angular/core"
+import {ChangeDetectionStrategy, Component, OnDestroy} from "@angular/core"
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap"
 import {UserService} from "../../shared/user.service"
-import {Observable, tap} from "rxjs"
+import {Observable, Subscription, tap} from "rxjs"
 import {Profile} from "../../models/profile"
 import {FormControl, FormGroup, Validators} from "@angular/forms"
 
@@ -11,10 +11,13 @@ import {FormControl, FormGroup, Validators} from "@angular/forms"
   styleUrls: ["./profile-edit-modal.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProfileEditModalComponent {
+export class ProfileEditModalComponent implements OnDestroy{
   maxDate = new Date()
 
   user$: Observable<Profile | null>
+
+  profile$: Subscription
+  profileUpdate$: Subscription
 
   form = new FormGroup({
     nickname: new FormControl("", [Validators.required]),
@@ -34,7 +37,7 @@ export class ProfileEditModalComponent {
 
   close(): void {
     const profile = this.form.value as Profile
-    this.service.updateProfile(profile)
+    this.profile$ = this.service.updateProfile(profile).subscribe()
 
     this.activeModal.close()
   }
@@ -45,6 +48,11 @@ export class ProfileEditModalComponent {
 
   changePhoto(input: HTMLInputElement): void {
     if (!input.files) return
-    this.service.updatePhoto(input.files[0])
+    this.profileUpdate$ = this.service.updatePhoto(input.files[0]).subscribe()
+  }
+
+  ngOnDestroy(): void {
+    this.profile$.unsubscribe()
+    this.profileUpdate$.unsubscribe()
   }
 }
