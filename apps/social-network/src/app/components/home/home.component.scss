@@ -1,7 +1,5 @@
 @use "apps/social-network/src/styles";
 
-$padding: 28px;
-
 :host {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -9,14 +7,14 @@ $padding: 28px;
 
   gap: 28px;
 
-  padding: $padding;
+  padding: 28px;
 
   background-color: #F9F9F9;
 }
 
 .section {
   position: sticky;
-  top: styles.$headerHeight + $padding;
+  top: 0;
 
   height: fit-content;
 
@@ -54,15 +52,13 @@ web-frame {
   }
 
   &--create-post {
-    width: 100%;
+    width: 663px;
     height: 124px;
   }
 
   &--posts {
-    width: 100%;
-
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: column;
 
     justify-content: center;
 

@@ -1,5 +1,5 @@
 <web-frame *ngIf="user$ | async as user" class="frame">
-  <img [src]="user.picture_path" alt="profile" class="frame--image">
+  <img [src]="user.picture_path" alt="profile" class="profile-image frame--image">
   <h4 [innerText]="user.nickname" class="frame--nickname"></h4>
   <p [innerText]="user.birthday" class="frame--birthday"></p>
 

@@ -6,7 +6,7 @@
   (dismissModal)="dismiss()">
   <ng-container *ngIf="user$ | async as user">
     <div class="block--photo">
-      <img [src]="user.picture_path" alt="profile picture" class="block--photo-img">
+      <img [src]="user.picture_path" alt="profile picture" class="block--photo-img profile-image">
       <label for="file-upload" webSecondaryTextBtn>Change photo</label>
       <input #avatarInput id="file-upload" type="file" accept="image/*" (input)="changePhoto(avatarInput)" class="block--photo-file"/>
     </div>

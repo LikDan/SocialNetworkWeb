@@ -1,10 +1,22 @@
 @use "apps/social-network/src/styles";
 
+:host {
+  display: flex;
+  flex-flow: column;
+
+  height: 100vh;
+
+  ::ng-deep > *:last-child {
+    flex-grow: 1;
+    overflow: scroll;
+  }
+}
+
 .header {
   position: sticky;
   top: 0;
 
-  height: styles.$headerHeight;
+  width: 100vw;
 
-  z-index: 9999;
+  z-index: 999;
 }
