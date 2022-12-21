@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from "@angular/core"
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from "@angular/core"
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap"
 import {Router} from "@angular/router"
 import {Subscription} from "rxjs"
@@ -11,7 +11,8 @@ import {
 @Component({
   selector: "web-home",
   templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"]
+  styleUrls: ["./home.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnDestroy, OnInit {
   profile$: Subscription
@@ -39,7 +40,7 @@ export class HomeComponent implements OnDestroy, OnInit {
   }
 
   openProfileModal() {
-    const modalRef = this.modalService.open(ProfileEditModalComponent);
+    const modalRef = this.modalService.open(ProfileEditModalComponent, {centered: true});
     modalRef.componentInstance.content = 'Content';
 
     modalRef.result.then(

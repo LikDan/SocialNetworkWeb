@@ -13,9 +13,11 @@
   <web-frame class="frame--create-post">
     Create post
   </web-frame>
-  <web-frame class="frame--post">
-    Post
+  <div class="frame--posts">
+  <web-frame class="frame--post" *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10]">
+    Post {{i + 1}}
   </web-frame>
+  </div>
 </section>
 <section class="section">
   <web-frame class="frame--subscribers">

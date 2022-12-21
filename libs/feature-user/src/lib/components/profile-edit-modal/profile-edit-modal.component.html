@@ -8,7 +8,7 @@
     <div class="block--photo">
       <img [src]="user.picture_path" alt="profile picture" class="block--photo-img">
       <label for="file-upload" webSecondaryTextBtn>Change photo</label>
-      <input #avatarInput id="file-upload" type="file" (input)="changePhoto(avatarInput)" class="block--photo-file"/>
+      <input #avatarInput id="file-upload" type="file" accept="image/*" (input)="changePhoto(avatarInput)" class="block--photo-file"/>
     </div>
     <div class="block--info">
       <h4>Information</h4>
