@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from "@angular/core"
+import {ChangeDetectionStrategy, Component, OnDestroy} from "@angular/core"
 import {UserService} from "../../../../../../libs/feature-user/src/lib/shared/user.service"
 import {AuthToken} from "../../../../../../libs/feature-auth/src/lib/models/token"
 import {Subscription} from "rxjs"
@@ -7,7 +7,8 @@ import {Router} from "@angular/router"
 @Component({
   selector: "web-auth",
   templateUrl: "./auth.component.html",
-  styleUrls: ["./auth.component.scss"]
+  styleUrls: ["./auth.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthComponent implements OnDestroy{
   loginMode = true

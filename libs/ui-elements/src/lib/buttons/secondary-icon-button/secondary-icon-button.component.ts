@@ -1,9 +1,10 @@
-import {Component, HostBinding, Input} from "@angular/core"
+import {ChangeDetectionStrategy, Component, HostBinding, Input} from "@angular/core"
 
 @Component({
   selector: "web-secondary-icon-button",
   templateUrl: "./secondary-icon-button.component.html",
   styleUrls: ["./secondary-icon-button.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SecondaryIconButtonComponent {
   @Input() src: string
