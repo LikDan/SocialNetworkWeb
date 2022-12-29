@@ -15,6 +15,11 @@ import {AuthHttpInterceptor} from "../../../../libs/feature-user/src/lib/interce
 import {LoggedInGuard} from "../../../../libs/feature-user/src/lib/guards/logged-in.guard"
 import {FeatureUserModule} from "@web/feature-user"
 import {HeaderComponent} from "./components/header/header.component"
+import {FeedComponent} from "./components/home/feed/feed.component"
+import {RequestsComponent} from "./components/home/requests/requests.component"
+import {BrowseComponent} from "./components/home/browse/browse.component"
+import {FeatureBrowseModule} from "@web/feature-browse"
+import {FeatureSubscriptionsModule} from "@web/feature-subscriptions"
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -30,6 +35,9 @@ const routes: Routes = [
     ModalComponent,
     AuthComponent,
     HeaderComponent,
+    FeedComponent,
+    RequestsComponent,
+    BrowseComponent,
   ],
   imports: [
     HttpClientModule,
@@ -40,6 +48,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     FeatureAuthModule,
     FeatureUserModule,
+    FeatureBrowseModule,
+    FeatureSubscriptionsModule
   ],
   providers: [
     NgbActiveModal,

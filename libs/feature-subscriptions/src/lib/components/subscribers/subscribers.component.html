@@ -1,0 +1,11 @@
+<web-frame *ngIf="subscribers$ | async as subscribers">
+  <h5 class="frame--title">Subscribers</h5>
+  <div class="profiles--block">
+    <div class="profile" *ngFor="let subscriber of subscribers">
+      <ng-container *ngIf="!!subscriber.from_profile">
+        <img [src]="subscriber.from_profile.picture_path" alt="profile picture" class="image profile-image">
+        {{subscriber.from_profile.nickname}}
+      </ng-container>
+    </div>
+  </div>
+</web-frame>

@@ -17,10 +17,11 @@ import {
 export class HomeComponent implements OnDestroy, OnInit {
   profile$: Subscription
 
-  selectedMenuItemId = 1
+  selectedMenuItemId = 3
   menuItems: MenuItem[] = [
-    {id: 1, title: "Profile", image: "assets/feed.svg"},
-    {id: 2, title: "Requests", image: "assets/requests.svg"}
+    {id: 1, title: "Feed", image: "assets/feed.svg"},
+    {id: 2, title: "Requests", image: "assets/requests.svg"},
+    {id: 3, title: "Browse", image: "assets/requests.svg"}
   ]
 
   constructor(private modalService: NgbModal, private router: Router, private userService: UserService) {

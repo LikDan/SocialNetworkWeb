@@ -1,0 +1,26 @@
+<ng-container *ngIf="profiles$ | async as profiles">
+  <table class="table">
+    <thead>
+    <tr class="table--header">
+      <th class="table--header--cell table--header--first">USERNAME</th>
+      <th class="table--header--cell">PRIVATE</th>
+      <th class="table--header--cell table--header--last"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let browseProfile of profiles">
+      <td class="table--cell">
+        <img [src]="browseProfile.profile.picture_path" alt="profile picture" class="table--image profile-image">
+        {{browseProfile.profile.nickname}}
+      </td>
+      <td class="table--cell">{{browseProfile.profile.is_private}}</td>
+      <td>
+        <button *ngIf="!browseProfile.subscription" webPrimaryLightBtn webCircleBtn (click)="add(browseProfile)">
+          <img src="assets/send-request.svg" alt="send request">
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <button class="next-page-btn" webPrimaryLightBtn webCircleBtn (click)="next()">></button>
+</ng-container>

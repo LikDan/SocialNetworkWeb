@@ -1,0 +1,38 @@
+<ng-container *ngIf="subscriptions$ | async as subscriptions">
+  <table class="table">
+    <thead>
+    <tr class="table--header">
+      <th class="table--header--cell table--header--first">USERNAME</th>
+      <th class="table--header--cell">PRIVATE</th>
+      <th class="table--header--cell">REQUEST DATE</th>
+      <th class="table--header--cell table--header--last"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let subscription of subscriptions">
+      <ng-container *ngIf="!!subscription.from_profile">
+        <td class="table--cell">
+          <img [src]="subscription.from_profile.picture_path" alt="profile picture" class="table--image profile-image">
+          {{subscription.from_profile.nickname}}
+        </td>
+        <td class="table--cell">{{subscription.from_profile.is_private}}</td>
+        <td class="table--cell">
+          <p class="table--request-at--date">{{subscription.created_at | date : "MM.dd.YYYY"}}</p>
+          <p class="table--request-at--time">{{subscription.created_at | date : "hh:mm:ss"}}</p>
+        </td>
+        <td>
+          <div class="table--action-cell" *ngIf="subscription.status === 'PENDING'">
+            <button webPrimaryLightBtn webCircleBtn (click)="accept(subscription)">
+              <img src="assets/add.svg" alt="send request">
+            </button>
+            <button webDangerLightBtn webCircleBtn (click)="decline(subscription)">
+              <img src="assets/block.svg" alt="send request">
+            </button>
+          </div>
+        </td>
+      </ng-container>
+    </tr>
+    </tbody>
+  </table>
+  <button class="next-page-btn" webPrimaryLightBtn webCircleBtn (click)="next()">></button>
+</ng-container>
