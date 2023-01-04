@@ -18,7 +18,11 @@
     "baseUrl": ".",
     "paths": {
       "@web/feature-auth": ["libs/feature-auth/src/index.ts"],
-      "@web/ui-elements": ["libs/ui-elements/src/index.ts"]
+      "@web/feature-browse": ["libs/feature-browse/src/index.ts"],
+      "@web/feature-subscriptions": ["libs/feature-subscriptions/src/index.ts"],
+      "@web/feature-user": ["libs/feature-user/src/index.ts"],
+      "@web/ui-elements": ["libs/ui-elements/src/index.ts"],
+      "@web/util-pagination": ["libs/util-pagination/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

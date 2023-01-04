@@ -1,66 +1,52 @@
-import { Component } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { MenuItem } from "@web/ui-elements";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { ModalComponent } from "../modal/modal.component";
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from "@angular/core"
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap"
+import {Router} from "@angular/router"
+import {Subscription} from "rxjs"
+import {UserService} from "../../../../../../libs/feature-user/src/lib/shared/user.service"
+import {MenuItem} from "@web/ui-elements"
+import {
+  ProfileEditModalComponent
+} from "../../../../../../libs/feature-user/src/lib/components/profile-edit-modal/profile-edit-modal.component"
 
 @Component({
   selector: "web-home",
   templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"]
+  styleUrls: ["./home.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent {
+export class HomeComponent implements OnDestroy, OnInit {
+  profile$: Subscription
 
-  public menuItems: MenuItem[] = [
-    {
-      id: 1,
-      title: "Title",
-      image: "/assets/menu/feed.svg"
-    },
-    {
-      id: 2,
-      title: "Title2",
-      image: "/assets/menu/feed.svg"
-    },
-    {
-      id: 3,
-      title: "Title2",
-      image: "/assets/menu/feed.svg"
-    }
-  ];
+  selectedMenuItemId = 3
+  menuItems: MenuItem[] = [
+    {id: 1, title: "Feed", image: "assets/feed.svg"},
+    {id: 2, title: "Requests", image: "assets/requests.svg"},
+    {id: 3, title: "Browse", image: "assets/requests.svg"}
+  ]
 
-  lastRes: string | null = null;
-
-  from = new FormGroup({
-    i: new FormControl("", Validators.required)
-  })
-
-  constructor(private http: HttpClient, private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private router: Router, private userService: UserService) {
   }
 
-  tryProxy(): void {
-    this.http.get("/api/static").subscribe({
-      next: console.log
-    });
+  ngOnInit(): void {
+    this.profile$ = this.userService.getProfile().subscribe({
+      next: profile => {
+        if (profile != null) return
+        this.router.navigate(["auth"]).then()
+      }
+    })
   }
 
+  ngOnDestroy(): void {
+    this.profile$.unsubscribe()
+  }
 
-  open() {
-    const modalRef = this.modalService.open(ModalComponent);
+  openProfileModal() {
+    const modalRef = this.modalService.open(ProfileEditModalComponent, {centered: true});
     modalRef.componentInstance.content = 'Content';
 
     modalRef.result.then(
-      v => {
-        this.lastRes = "close " + v
-      },
-      v => {
-        this.lastRes = "dismiss " + v
-      }
+      v =>  console.log(v),
+      v => console.log(v)
     )
-  }
-
-  log($event: any) {
-    console.log($event)
   }
 }

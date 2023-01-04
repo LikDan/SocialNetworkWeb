@@ -1,15 +1,53 @@
+@use "apps/social-network/src/styles";
+
 :host {
-  padding: 10px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: 1fr;
+
+  gap: 28px;
+
+  padding: 28px;
+
+  background-color: #F9F9F9;
+}
+
+.section {
+  position: sticky;
+  top: 0;
+
+  height: fit-content;
 
   display: flex;
   flex-flow: column;
+  gap: 24px;
 
-  gap: 10px;
+  &--main {
+    align-items: center;
+  }
 }
 
-div, form{
-  display: flex;
-  flex-flow: row;
+web-frame {
+  display: grid;
+  place-items: center;
+}
 
-  gap: 10px;
+.frame {
+  &--profile {
+    width: 283px;
+    height: 347px;
+  }
+
+  &--nav {
+    width: 283px;
+
+    &-menu {
+      width: 100%;
+    }
+  }
+
+  &--subscribers {
+    width: 283px;
+    height: 800px;
+  }
 }

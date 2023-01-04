@@ -1,52 +1,17 @@
-<div>
-  <button webPrimaryBtn (click)="tryProxy()">Click me</button>
-  <button webSecondaryBtn (click)="tryProxy()">Click me</button>
-  <button webSecondaryBtn webSquareBtn (click)="tryProxy()">...</button>
-  <button webDangerLightBtn webCircleBtn (click)="tryProxy()">P</button>
-  <button webPrimaryLightBtn webCircleBtn (click)="tryProxy()">P</button>
-  <button webSecondaryBtn webCircleBtn (click)="tryProxy()">P</button>
-</div>
-
-<div>
-  <button webSecondaryTextBtn>Click me</button>
-</div>
-
-<div>
-  <input webCheckbox>
-</div>
-
-<div>
-  <web-login (loginSuccess)="log($event)"></web-login>
-  <web-signup></web-signup>
-</div>
-
-<form [formGroup]="from">
-  <input webInput>
-  <input webInput formControlName="i">
-</form>
-
-<div>
-  <web-menu-item [item]="menuItems[0]" [selected]="true" style="width: 100%"></web-menu-item>
-  <web-menu-item [item]="menuItems[0]" [selected]="false" style="width: 100%"></web-menu-item>
-
-  <web-menu [items]="menuItems" [selectedId]="2" style="width: 100%"></web-menu>
-</div>
-
-<div>
-  <button webPrimaryBtn (click)="open()">Show Dialog</button>
-
-  <p>{{lastRes ?? ""}}</p>
-</div>
-
-<div>
-  <web-frame style="width: 100%; height: 500px"></web-frame>
-  <web-popup style="width: 100%; height: 500px"></web-popup>
-  <web-modal-frame title="title" style="width: 100%; height: 500px"></web-modal-frame>
-</div>
-
-<div>
-  <select webSelect>
-    <option>1</option>
-    <option>2</option>
-  </select>
-</div>
+<section class="section">
+  <web-profile (profileClick)="openProfileModal()"></web-profile>
+  <web-frame class="frame--nav">
+    <web-menu
+      class="frame--nav-menu"
+      [items]="menuItems"
+      [selectedId]="selectedMenuItemId"
+      (selectItem)="selectedMenuItemId = $event.id"
+    ></web-menu>
+  </web-frame>
+</section>
+<web-feed *ngIf="selectedMenuItemId === 1" class="section section--main"></web-feed>
+<web-requests *ngIf="selectedMenuItemId === 2" class="section section--main"></web-requests>
+<web-browse *ngIf="selectedMenuItemId === 3" class="section section--main"></web-browse>
+<section class="section">
+  <web-subscribers class="frame--subscribers"></web-subscribers>
+</section>

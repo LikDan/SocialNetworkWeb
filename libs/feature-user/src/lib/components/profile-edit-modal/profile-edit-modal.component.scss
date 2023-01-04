@@ -1,0 +1,46 @@
+.block--photo {
+  display: flex;
+  flex-flow: column;
+
+  align-items: center;
+
+  margin-bottom: 32px;
+
+  &-img {
+    width: 110px;
+    aspect-ratio: 1;
+
+    margin-bottom: 14px;
+
+    border-radius: 50%;
+  }
+
+  &-file {
+    display: none;
+  }
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+
+  margin-top: 22px;
+
+  &--label {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+
+    margin-bottom: 4px;
+  }
+
+  &--input {
+    height: 40px;
+  }
+
+  &--private-checkbox {
+    margin-right: 8px;
+  }
+}

@@ -1,0 +1,53 @@
+:host {
+  display: flex;
+  flex-flow: column;
+}
+
+.table {
+  width: 100%;
+
+  &--header {
+    &--first {
+      background: #F6F6FB;
+      border-radius: 8px 0 0 8px;
+    }
+
+    &--last {
+      background: #F6F6FB;
+      border-radius: 0 8px 8px 0;
+    }
+
+    &--cell {
+      background: #F6F6FB;
+      font-weight: 400;
+
+      font-size: 12px;
+      line-height: 36px;
+      height: 36px;
+
+      padding: 0 16px;
+
+      color: #7E8892;
+
+      border: none;
+    }
+  }
+
+  &--image {
+    width: 36px;
+    aspect-ratio: 1;
+
+    margin-right: 8px;
+  }
+
+  &--cell {
+    font-size: 14px;
+
+    padding: 0 16px;
+    line-height: 54px;
+  }
+}
+
+.next-page-btn {
+  align-self: flex-end;
+}

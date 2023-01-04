@@ -1,0 +1,34 @@
+<web-modal-frame
+  title="Profile settings"
+  primaryButtonText="Save settings"
+  secondaryButtonText="Cancel"
+  (closeModal)="close()"
+  (dismissModal)="dismiss()">
+  <ng-container *ngIf="user$ | async as user">
+    <div class="block--photo">
+      <img [src]="user.picture_path" alt="profile picture" class="block--photo-img profile-image">
+      <label for="file-upload" webSecondaryTextBtn>Change photo</label>
+      <input #avatarInput id="file-upload" type="file" accept="image/*" (input)="changePhoto(avatarInput)" class="block--photo-file"/>
+    </div>
+    <div class="block--info">
+      <h4>Information</h4>
+      <form class="form" [formGroup]="form">
+        <div>
+          <p class="form--label">Nickname</p>
+          <input webInput class="form--input" placeholder="Nickname" formControlName="nickname">
+        </div>
+        <div>
+          <p class="form--label">Birthday</p>
+          <input #birthday webInput class="form--input" placeholder="Birthday" formControlName="birthday"
+                 type="text" [max]="maxDate | date: 'yyyy-MM-dd'"
+                 (focusin)="birthday.type = 'date'" (focusout)="birthday.type = 'text'">
+        </div>
+        <div>
+          <input id="is_private" webCheckbox type="checkbox" class="form--private-checkbox"
+                 formControlName="is_private">
+          <label for="is_private">Private</label>
+        </div>
+      </form>
+    </div>
+  </ng-container>
+</web-modal-frame>

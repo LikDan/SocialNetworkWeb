@@ -30,6 +30,7 @@ export class SignupComponent implements OnDestroy {
   primaryBtnDisabled = false
 
   @Output() signupSuccess = new EventEmitter<AuthToken>()
+  @Output() login = new EventEmitter<null>()
 
   maxDate = new Date()
 
@@ -50,14 +51,14 @@ export class SignupComponent implements OnDestroy {
 
   submit(): void {
     const data = this.form.value as SignUpData
-    this.service.signup(data).pipe(catchError(v => {
+    this.signup$ = this.service.signup(data).pipe(catchError(v => {
       this.primaryBtnDisabled = false
       this.cdr.detectChanges()
       return of(v)
-    })).subscribe(this.signupSuccess.emit)
+    })).subscribe({next: t => this.signupSuccess.emit(t)})
   }
 
   ngOnDestroy(): void {
-    this.signup$.unsubscribe()
+    this.signup$?.unsubscribe()
   }
 }

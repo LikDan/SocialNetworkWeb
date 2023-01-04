@@ -1,0 +1,20 @@
+.frame {
+  &--create-post {
+    width: 663px;
+    height: 124px;
+  }
+
+  &--posts {
+    display: flex;
+    flex-flow: column;
+
+    justify-content: center;
+
+    gap: 24px
+  }
+
+  &--post {
+    width: 663px;
+    height: 532px;
+  }
+}

@@ -14,10 +14,13 @@
       </div>
       <div class="form--bottom-bar">
         <div>
-          <input id="remember" webCheckbox class="form--remember-checkbox">
+          <input #remember id="remember" webCheckbox class="form--remember-checkbox">
           <label for="remember">Remember me</label>
         </div>
         <button type="submit" webPrimaryBtn [disabled]="!form.valid || primaryBtnDisabled">Continue</button>
+      </div>
+      <div class="form--signup-block">
+        <button webSecondaryTextBtn (click)="signup.emit()">Sign up</button>
       </div>
     </form>
   </main>
