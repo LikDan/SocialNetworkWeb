@@ -9,8 +9,9 @@ import {Subscription} from "../../models/subscription"
   styleUrls: ["./requests-table.component.scss"],
 })
 export class RequestsTableComponent implements OnInit, OnDestroy{
-  subscriptions$: Observable<Subscription[]>
+  requests$: Observable<Subscription[]>
 
+  loadSubscription$: RXSubscription
   acceptSubscription$: RXSubscription
   declineSubscription$: RXSubscription
 
@@ -18,12 +19,13 @@ export class RequestsTableComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(): void {
-    this.subscriptions$ = this.service.getRequests()
+    this.loadSubscription$ = this.service.requestsLoad().subscribe()
+    this.requests$ = this.service.requests()
   }
 
-  next(): void {
-    this.subscriptions$ = this.service.nextRequests()
-  }
+  hasNext = (): Observable<boolean> => this.service.requestsHasNext()
+  next = (): void => this.service.requestsNext()
+
 
   accept(subscription: Subscription): void {
     this.acceptSubscription$?.unsubscribe()

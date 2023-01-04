@@ -1,29 +1,27 @@
 import {Injectable} from "@angular/core"
 import {HttpClient} from "@angular/common/http"
-import {Observable, tap} from "rxjs"
+import {Observable} from "rxjs"
 import {ShortProfile} from "../models/profile"
-import {PaginationService} from "../../../../util-pagination/src/lib/pagination.service"
 import {Subscription} from "../models/subscription"
+import {Pagination} from "../../../../util-pagination/src/lib/pagination"
 
 @Injectable({
   providedIn: "root"
 })
 export class BrowseService {
+  private pagination: Pagination<ShortProfile>
 
-  lastId: string
-
-  constructor(private http: HttpClient, private pagination: PaginationService) {
+  constructor(private http: HttpClient) {
+    this.pagination = new Pagination(http, "api/profiles")
   }
 
-  getProfiles(): Observable<ShortProfile[]> {
-    return this.http.get<ShortProfile[]>("api/profiles").pipe(tap(v => this.lastId = v[v.length - 1].id))
-  }
-
-  next(): Observable<ShortProfile[]> {
-    return this.pagination.next("api/profiles", this.lastId)
-  }
+  profiles = (): Observable<ShortProfile[]> => this.pagination.elements
+  load = (): Observable<ShortProfile[]> => this.pagination.load()
+  next = (): void => this.pagination.next()
+  hasNext = (): Observable<boolean> => this.pagination.hasNext
 
   add(id: string): Observable<Subscription> {
     return this.http.post<Subscription>(`api/profiles/${id}/subscribe`, {})
   }
+
 }

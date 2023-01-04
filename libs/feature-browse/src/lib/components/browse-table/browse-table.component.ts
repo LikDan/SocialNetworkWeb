@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from "@angular/core"
 import {BrowseService} from "../../services/browse.service"
-import {map, Observable, Subscription} from "rxjs"
+import {map, Observable, Subscription, tap} from "rxjs"
 import {BrowseShortProfile} from "../../models/profile"
 
 @Component({
@@ -11,24 +11,21 @@ import {BrowseShortProfile} from "../../models/profile"
 })
 export class BrowseTableComponent implements OnInit, OnDestroy {
   profiles$: Observable<BrowseShortProfile[]>
-
   subscription$: Subscription
+  loadSubscription$: Subscription
 
   constructor(private service: BrowseService, private cdr: ChangeDetectorRef) {
   }
 
-  //fixme
-  // get profiles$(): Observable<ShortProfile[]> {
-  //   return this.service.getProfiles()
-  // }
-
   ngOnInit(): void {
-    this.profiles$ = this.service.getProfiles().pipe(map(v => v.map(p => <BrowseShortProfile>{profile: p})))
+    this.loadSubscription$ = this.service.load().subscribe()
+    this.profiles$ = this.service.profiles().pipe(
+      map(v => v.map(p => <BrowseShortProfile>{profile: p})),
+    )
   }
 
-  next(): void {
-    this.profiles$ = this.service.next().pipe(map(v => v.map(p => <BrowseShortProfile>{profile: p})))
-  }
+  hasNext = (): Observable<boolean> => this.service.hasNext()
+  next = (): void => this.service.next()
 
   add(browseProfile: BrowseShortProfile): void {
     this.subscription$?.unsubscribe()
@@ -42,5 +39,7 @@ export class BrowseTableComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription$?.unsubscribe()
+    this.loadSubscription$?.unsubscribe()
   }
+
 }

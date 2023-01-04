@@ -1,4 +1,4 @@
-<ng-container *ngIf="subscriptions$ | async as subscriptions">
+<ng-container *ngIf="requests$ | async as subscriptions">
   <table class="table">
     <thead>
     <tr class="table--header">
@@ -34,5 +34,5 @@
     </tr>
     </tbody>
   </table>
-  <button class="next-page-btn" webPrimaryLightBtn webCircleBtn (click)="next()">></button>
+  <button *ngIf="this.hasNext() | async" class="next-page-btn" webPrimaryLightBtn webCircleBtn (click)="next()">></button>
 </ng-container>

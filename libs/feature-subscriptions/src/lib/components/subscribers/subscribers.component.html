@@ -8,4 +8,5 @@
       </ng-container>
     </div>
   </div>
+  <button *ngIf="this.hasNext() | async" class="next-page-btn" webPrimaryLightBtn webCircleBtn (click)="next()">></button>
 </web-frame>

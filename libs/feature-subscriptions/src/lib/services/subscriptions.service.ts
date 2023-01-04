@@ -1,45 +1,34 @@
 import {Injectable} from "@angular/core"
 import {HttpClient} from "@angular/common/http"
-import {BehaviorSubject, Observable, tap} from "rxjs"
+import {Observable, tap} from "rxjs"
 import {Subscription, SubscriptionStatus} from "../models/subscription"
-import {PaginationService} from "../../../../util-pagination/src/lib/pagination.service"
+import {Pagination} from "../../../../util-pagination/src/lib/pagination"
 
 @Injectable({
   providedIn: "root"
 })
 export class SubscriptionsService {
+  private requestsPagination: Pagination<Subscription>
+  private subscriptionsPagination: Pagination<Subscription>
 
-  lastId: string
-  lastSubscribersId: string
-
-  subscribers$ = new BehaviorSubject<Subscription[]>([])
-
-  constructor(private http: HttpClient, private pagination: PaginationService) {
+  constructor(private http: HttpClient) {
+    this.requestsPagination = new Pagination<Subscription>(http, "api/subscribers?status=PENDING")
+    this.subscriptionsPagination = new Pagination<Subscription>(http, "api/subscribers?status=APPROVED")
   }
 
-  getRequests(): Observable<Subscription[]> {
-    return this.http.get<Subscription[]>("api/subscribers?status=PENDING").pipe(tap(s => this.lastId = s[s.length - 1].id))
-  }
+  requests = (): Observable<Subscription[]> => this.requestsPagination.elements
+  requestsLoad = (): Observable<Subscription[]> => this.requestsPagination.load()
+  requestsNext = (): void => this.requestsPagination.next()
+  requestsHasNext = (): Observable<boolean> => this.requestsPagination.hasNext
 
-  nextRequests(): Observable<Subscription[]> {
-    return this.pagination.next("api/subscribers?status=PENDING", this.lastId)
-  }
-
-  getSubscribers(): Observable<Subscription[]> {
-    this.http.get<Subscription[]>("api/subscribers?status=APPROVED")
-      .pipe(tap(s => this.lastSubscribersId = s[s.length - 1].id))
-      .subscribe({next: v => this.subscribers$.next(v)})
-
-    return this.subscribers$
-  }
-
-  nextSubscribers(): Observable<Subscription[]> {
-    return this.pagination.next("api/subscribers?status=APPROVED", this.lastSubscribersId)
-  }
+  subscriptions = (): Observable<Subscription[]> => this.subscriptionsPagination.elements
+  subscriptionsLoad = (): Observable<Subscription[]> => this.subscriptionsPagination.load()
+  subscriptionsNext = (): void => this.subscriptionsPagination.next()
+  subscriptionsHasNext = (): Observable<boolean> => this.subscriptionsPagination.hasNext
 
   accept(s: Subscription): Observable<SubscriptionStatus> {
     return this.http.post<SubscriptionStatus>(`api/subscriptions/${s.from_profile_id}`, {status: "APPROVED"})
-      .pipe(tap(_ => this.subscribers$.next([...this.subscribers$.value, s])))
+      .pipe(tap(_ => this.subscriptionsPagination.append(s)))
   }
 
   decline(s: Subscription): Observable<SubscriptionStatus> {

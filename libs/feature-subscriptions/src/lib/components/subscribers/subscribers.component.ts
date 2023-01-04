@@ -12,10 +12,16 @@ import {SubscriptionsService} from "../../services/subscriptions.service"
 export class SubscribersComponent implements OnInit{
   subscribers$: Observable<Subscription[]>
 
+  loadSubscription$: RXSubscription
+
   constructor(private service: SubscriptionsService, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
-    this.subscribers$ = this.service.getSubscribers()
+    this.loadSubscription$ = this.service.subscriptionsLoad().subscribe()
+    this.subscribers$ = this.service.subscriptions()
   }
+
+  hasNext = (): Observable<boolean> => this.service.subscriptionsHasNext()
+  next = (): void => this.service.subscriptionsNext()
 }
